@@ -1,9 +1,10 @@
+#include<bits/stdc++.h>
+using namespace std;
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
         vector<vector<int>> ans;
         ans.push_back({1});
-        //ans.push_back({1,1});
         for(int i=1;i<numRows;i++){
             vector<int> temp;
             temp.push_back(1);
@@ -16,3 +17,16 @@ public:
         return ans;
     }
 };
+int main(){
+    int numRows;
+    cin>>numRows;
+    Solution obj;
+    vector<vector<int>> ans=obj.generate(numRows);
+    for(int i=0;i<ans.size();i++){
+        for(int j=0;j<ans[i].size();j++){
+            cout<<ans[i][j]<<" ";
+        }
+        cout<<"\n";
+    }
+    return 0;
+}
