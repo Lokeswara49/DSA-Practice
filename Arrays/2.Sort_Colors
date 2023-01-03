@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class SortColors {
+public:
+    void swap(vector<int> &nums,int i,int j){
+        int temp=nums[i];
+        nums[i]=nums[j];
+        nums[j]=temp;
+    }
+    void sortColors(vector<int>& nums) {
+        int mid=0,low=0,high=nums.size()-1;     // till low all are zeros and after high all are 2's and between low and high all  are 1's.
+        for(mid=0;mid<=high;mid++){
+            if(nums[mid]==0){                   // swapping 0 to before low.
+                swap(nums,mid,low);
+                low++;
+            }
+            if(nums[mid]==2){
+                swap(nums,mid,high);            // swapping 2 to before  high .
+                high--;
+                mid--;                          // mid should not move  on here.
+            }
+        }
+    }
+};
+int main(){
+    vector<int> nums;
+    int n;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        int x;
+        cin>>x;
+        nums.push_back(x);
+    }
+    SortColors obj;
+    obj.sortColors(nums);
+    for(int i=0;i<n;i++){
+        cout<<nums[i]<<" ";
+    }
+}
