@@ -1,0 +1,44 @@
+public class Solution {
+    public static int NthRoot(int n, int m) {
+        int low=1;
+        int high=m;
+        while(low<=high){
+            int mid=((high-low)/2)+low;
+            //System.out.print("mid"+mid);
+            int x=findPow(mid,n,m);
+            if(x==m){
+                return mid;
+            }
+            else if(x<m){
+                low=mid+1;
+            }
+            else{
+                high=mid-1;
+            }
+        }
+        return -1;
+    }
+    public static int findPow(long x, long y,int m){
+        long ans=1;
+        //System.out.print("x"+x+"y"+y);
+        if(y==0){
+            return 1;
+        }
+        while(y>0){
+            if(x>m || ans>m){
+                //System.out.println("val"+(m+1));
+                return m+1;
+            }
+            if(y%2==0){
+                x=x*x;
+                y=y/2;
+            }
+            else{
+                ans=ans*x;
+                y--;
+            }
+        }
+       // System.out.println("val"+ans);
+        return (int)ans;
+    }
+}
