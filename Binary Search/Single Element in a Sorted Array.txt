@@ -1,0 +1,31 @@
+class Solution {
+    public int singleNonDuplicate(int[] nums) {
+        int low=0;
+        int high=nums.length-1;
+        int n=nums.length;
+        while(low<=high){
+            int mid=(high-low)/2+low;
+            System.out.println(mid);
+            if(mid+1<n && nums[mid]==nums[mid+1]){
+                if(mid%2==1){
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            else if(mid-1>=0 && nums[mid]==nums[mid-1]){
+                if(mid%2==0){
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }
+            }
+            else{
+                return nums[mid];
+            }
+        }
+        return 0;
+    }
+}
